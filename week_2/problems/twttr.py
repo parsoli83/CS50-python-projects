@@ -14,13 +14,9 @@ def shortner(word):
 def not_vow(i):
     vow=["a","e","o","u","i"]
     voww=["A","E","O","U","I"]
-    for j in vow:
-        if j==i:
-            return False
-    for j in voww:
-        if j==i:
-            return False
-    return True
+    if i not in vow and i not in voww:
+        return True
+    return False
 
 
 main()
