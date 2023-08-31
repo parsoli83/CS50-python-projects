@@ -1,0 +1,19 @@
+from twttr import shorten
+def test_alpha():
+    assert shorten("aaaa")==""
+    assert shorten("hello")=="hll"
+    assert shorten("twitter")=="twttr"
+def test_capital():
+    assert shorten("AAA")==""
+    assert shorten("HELLO")=="HLL"
+    assert shorten("TWITTER")=="TWTTR"
+def test_punctuation():
+    assert shorten("aaaa,.!")==",.!"
+    assert shorten("hello,.!")=="hll,.!"
+    assert shorten("twitter,.!")=="twttr,.!"
+def test_mixed():
+    assert shorten("1aaaa")=="1"
+    assert shorten("1hello")=="1hll"
+    assert shorten("1twitter")=="1twttr"
+def test_numeric():
+    assert shorten("1234")=="1234"
