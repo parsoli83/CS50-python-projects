@@ -1,7 +1,15 @@
-greet=input("Greeting: ").lower().strip()[:5]
-if greet=="hello":
-    print("$0")
-elif greet[0]=="h":
-    print("$20")
-else:
-    print("$100")
+def main():
+    print(value(input("Greeting: ").lower().strip()[:5]))
+
+
+def value(greet):
+    greeting=greet.lower()
+    if greeting=="hello":
+        return"$0"
+    elif greeting[0]=="h":
+        return"$20"
+    return"$100"
+
+
+if __name__ == "__main__":
+    main()
