@@ -27,8 +27,10 @@ def convert(fraction):
     try:
         inp=fraction.split("/")
         percentagee=int(inp[0])/int(inp[1])
-        if percentagee<=1 and percentagee>=0:
+        if 0<=percentagee<=1:
             return round(percentagee*100)
+        else:
+            raise ValueError
     except ZeroDivisionError:
         raise ZeroDivisionError
     except ValueError:
@@ -47,3 +49,9 @@ def gauge(percentage):
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
