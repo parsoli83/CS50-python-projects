@@ -3,7 +3,6 @@ from tabulate import tabulate
 import csv
 
 def get_input():
-
     arguments=sys.argv
     if len(arguments)<2:
         print("Too few command-line arguments")

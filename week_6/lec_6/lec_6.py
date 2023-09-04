@@ -107,7 +107,6 @@ with open("file.csv",r) as file:
 *** pillow ***
 # a librrary for imgae/gif/video
 
-"""
 from PIL import Image
 import sys
 import csv
@@ -145,3 +144,4 @@ def get_input():
 if __name__=="__main__":
     main()
 
+"""
