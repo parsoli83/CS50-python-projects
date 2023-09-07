@@ -137,7 +137,6 @@ class shit:
 # remember to put _ before the variable name
 # because it has the same name as function
 
-
 2:  @{var_name}.setter for setter
 # sets the value for the variable
 # you can error check here
@@ -145,28 +144,120 @@ class shit:
 # because it has the same name as function
 
 
+# dont touch varibale that start with _ or __ :) 
+
+*** @classmethod ***
+#a decorator for a function related to the class not the object
+
+
+class Transit:
+    transit_modes={
+        "metro":{"cap":"high"},
+        "tram":{"cap":"medium"},
+        "bus":{"cap":"low"},
+        "LRT":{"cap":"medium/high"}
+    }
+    #this is a global variable
+    def __init__(self,mode):
+        self.mode =mode
+
+    @property
+    def mode(self):
+        return self._mode
+    
+    @mode.setter
+    def mode(self,mode):
+        if mode in self.transit_modes:
+            self._mode=mode
+        else:
+            raise ValueError
+    
+    def capacity(self):
+        return self.transit_modes[self.mode]["cap"]
+ 
+transit=Transit(input())
+print(transit.capacity())
+
+
+#you also can make a @classmethod
+#for getting the data
+
+class Transit:
+    transit_modes={
+        "metro":{"cap":"high"},
+        "tram":{"cap":"medium"},
+        "bus":{"cap":"low"},
+        "LRT":{"cap":"medium/high"}
+    }
+    #this is a global variable
+    def __init__(self,mode):
+        self.mode =mode
+
+    @classmethod
+    def get(cls):
+        mode=input()
+        return cls(mode)
+
+    @property
+    def mode(self):
+        return self._mode
+    
+    @mode.setter
+    def mode(self,mode):
+        if mode in self.transit_modes:
+            self._mode=mode
+        else:
+            raise ValueError
+    
+    def capacity(self):
+        return self.transit_modes[self.mode]["cap"]
+ 
+transit=Transit(input())
+print(transit.capacity())
+
+
+--> classmethod
+# a variable for the class that all objects can access
+
+class Parsa:
+    greetings=[
+        "hi",
+        "hello",
+        "nice to meet you",
+        "heyyy"
+    ]
+    @classmethod
+    def say_hi(cls):
+        print(random.choice(cls.greetings))
+
+Parsa.say_hi()
+
+*** inheritance ***
+#when a class is subset of another
+#it inherits its methods
+
+class Transit:
+    def __init__(self,mode,route):
+        self.mode=mode
+        self.route=route
+        self.goodness="good"
+    def is_good(self):
+        return f"yes {self.mode},{self.route} is very good"
+        
+
+class LRT(Transit):
+    def __init__(self,route,cap):
+        super().__init__("LRT",route)
+        self.cap=cap
+    def capacity(self):
+        return self.cap
+
+lrt=LRT("AB","high")
+print(lrt.is_good())
+print(lrt.capacity())
+
+
+operator overload is possible too
 
 
 """
-
-
-class shit:
-    def __init__(self,state,color,smell):
-        self.state=state
-        self.color=color
-        self.smell=smell 
-    @property
-    def smell(self):
-        return self._smell
-    
-    @smell.setter
-    def smell(self,smell):
-        if smell not in ["bad","awful","toxic"]:
-            raise ValueError
-        else:
-            self._smell=smell
-
-
-pee=shit("solid","brown","bad")
-pee.smell="good"
-print(pee.smell)
