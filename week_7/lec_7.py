@@ -22,7 +22,7 @@ re.sub(pattern,replace_with_what,string)
 +   1 or more repetitions
 ?   0 or 1 repetition
 {m}    m repetitions
-(m,n)   m-n repetitions
+{m,n}   m-n repetitions
 
 # placement:
 
